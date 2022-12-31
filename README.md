@@ -1,6 +1,6 @@
 # Prize Picks Bet Calculator
 This python script takes the current bets from the Prize Picks API and compares it to predicted data
-from https://sportsline.com to make a list of the top 25 most likely to hit bets.
+from https://sportsline.com to make a list of the top 50 most likely to hit bets.
 
 ## Supported Leagues
 - [X] NBA (Points, Rebounds, Assists, Fantasy Score, Blocks, Steals, Turnovers)
