@@ -191,6 +191,6 @@ for data in results:
 diffrences.sort(key=sort_key, reverse=True)
 
 # Create table
-first40 = diffrences[0:40]
+first40 = diffrences[0:50]
 first40.insert(0, ["Name", "Proj", "Pred", "Diff", "LG", "Type", "O/U"])
 print(tabulate(first40, headers='firstrow', tablefmt='fancy_grid'))
