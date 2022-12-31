@@ -55,13 +55,13 @@ for data in nba:
     predictedNBA.append([data['PLAYER'], data['FP'], data['PTS'], data['AST'], data['TRB'], data['BK'], data['ST'], data['TO'], data['FT']])
     
 # Load predicted NHL data            
-f = open('nhl.json')
-nhl = json.load(f)
+#f = open('nhl.json')
+#nhl = json.load(f)
 
-predictedNHL = list()
+#predictedNHL = list()
 
-for data in nhl:
-    predictedNHL.append([data['PLAYER'], data['SOG'], data['WINS'], data['GOALS'], data['SAVES']])
+#for data in nhl:
+    #predictedNHL.append([data['PLAYER'], data['SOG'], data['WINS'], data['GOALS'], data['SAVES']])
     
 # Load predicted NFL data            
 f = open('nfl.json')
@@ -190,11 +190,7 @@ for data in results:
 # Sort diffrences from highest to lowest
 diffrences.sort(key=sort_key, reverse=True)
 
-i = 0
-for data in diffrences:
-    i = i + 1
-    
-    if i > 25:
-        break
-    
-    print(tabulate(diffrences, tablefmt='fancy_grid'))
+# Create table
+first40 = diffrences[0:40]
+first40.insert(0, ["Name", "Proj", "Pred", "Diff", "LG", "Type", "O/U"])
+print(tabulate(first40, headers='firstrow', tablefmt='fancy_grid'))
