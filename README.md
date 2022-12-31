@@ -10,7 +10,7 @@ from https://sportsline.com to make a list of the top 25 most likely to hit bets
 
 ## How to use
  * Go to https://www.sportsline.com/nba/expert-projections/simulation
- * Export the data for NBA, NFL, and CFB (If a prediction doesnt exist, check back later!)
+ * Export the data for NBA, NFL, and CFB (If a prediction doesn't exist, check back later!)
  * You will download CSV files for those leagues
  * Go to https://csvjson.com/csv2json
  * Upload the CSV files and convert them to JSON
