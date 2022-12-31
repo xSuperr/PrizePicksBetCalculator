@@ -12,7 +12,6 @@ params = (
 
 headers = {
 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
-
 }
 session = requests.Session()
 response = session.get('https://api.prizepicks.com/projections', data=params, headers=headers)
@@ -55,13 +54,13 @@ for data in nba:
     predictedNBA.append([data['PLAYER'], data['FP'], data['PTS'], data['AST'], data['TRB'], data['BK'], data['ST'], data['TO'], data['FT']])
     
 # Load predicted NHL data            
-#f = open('nhl.json')
-#nhl = json.load(f)
+f = open('nhl.json')
+nhl = json.load(f)
 
-#predictedNHL = list()
+predictedNHL = list()
 
-#for data in nhl:
-    #predictedNHL.append([data['PLAYER'], data['SOG'], data['WINS'], data['GOALS'], data['SAVES']])
+for data in nhl:
+    predictedNHL.append([data['PLAYER'], data['SOG'], data['WINS'], data['GOALS'], data['SAVES'], data['ASSISTS'], data['BLOCKED SHOTS']])
     
 # Load predicted NFL data            
 f = open('nfl.json')
@@ -90,7 +89,7 @@ for data in results:
     score_type = data[2]
     league = data[3]
     
-    # TODO: NHL
+    
     if league == 'NBA':
         for nData in predictedNBA:
             if nData[0] == name:
@@ -118,13 +117,15 @@ for data in results:
                     
                 if predicted == None:
                     print("Score type for Type: "+score_type+" in NBA could not be found!")
+                elif predicted == "":
+                    print("Predicted data for Type: "+score_type+" in NBA could not be found!")
                 else:
                     if projected >= predicted:
                         diffrence = projected - predicted
                         diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
                     else:
                         diffrence = predicted - projected
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])    
 
     elif league == 'NFL':
         for nData in predictedNFL:
@@ -145,13 +146,15 @@ for data in results:
                 
                 if predicted == None:
                     print("Score type for Type: "+score_type+" in NFL could not be found!")
+                elif predicted == "":
+                    print("Predicted data for Type: "+score_type+" in NFL could not be found!")
                 else:
                     if projected >= predicted:
                         diffrence = projected - predicted
                         diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
                     else:
                         diffrence = predicted - projected
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])    
 
     elif league == 'CFB':
         for nData in predictedCFB:
@@ -176,14 +179,45 @@ for data in results:
                     
                 if predicted == None:
                     print("Score type for Type: "+score_type+" in CFB could not be found!")
+                elif predicted == "":
+                    print("Predicted data for Type: "+score_type+" in CFB could not be found!")
                 else:
                     if projected >= predicted:
                         diffrence = projected - predicted
                         diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
                     else:
                         diffrence = predicted - projected
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])    
     
+    elif league == 'NHL':
+        for nData in predictedNHL:
+            if nData[0] == name:
+                predicted = None
+                if score_type == 'Shots On Goal':
+                    predicted = nData[1]
+                if score_type == 'Points':
+                    predicted = nData[2]
+                if score_type == 'Goals':
+                    predicted = nData[3]
+                if score_type == 'Assists':
+                    predicted = nData[5]
+                if score_type == 'Goalie Saves':
+                    predicted = nData[4]
+                if score_type == 'Blocked Shots':
+                    predicted = nData[6]
+                    
+                if predicted == None:
+                    print("Score type for Type: "+score_type+" in NHL could not be found!")
+                elif predicted == "":
+                    print("Predicted data for Type: "+score_type+" in NHL could not be found!")
+                else:
+                    if projected >= predicted:
+                        diffrence = projected - predicted
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
+                    else:
+                        diffrence = predicted - projected
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])    
+        
     else:
         print("League: "+league+" not found!")
 
@@ -192,5 +226,5 @@ diffrences.sort(key=sort_key, reverse=True)
 
 # Create table
 first40 = diffrences[0:50]
-first40.insert(0, ["Name", "Proj", "Pred", "Diff", "LG", "Type", "O/U"])
+first40.insert(0, ["Player Name", "Proj", "Pred", "Diff", "Game", "Statistic Type", "O/U"])
 print(tabulate(first40, headers='firstrow', tablefmt='fancy_grid'))
