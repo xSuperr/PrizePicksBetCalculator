@@ -1,20 +1,20 @@
 import requests
 import json
 from tabulate import tabulate
+from fake_headers import Headers
 
 # Sort key for sorting diffrences from highest to lowest
 def sort_key(data):
     return data[3]
 
 # PrizePicks api request for current projections
-params = (
-)
+headers = Headers(
+        # Generate fake headers
+        headers=True 
+).generate()
 
-headers = {
-"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
-}
 session = requests.Session()
-response = session.get('https://api.prizepicks.com/projections', data=params, headers=headers)
+response = session.get('https://api.prizepicks.com/projections', headers=headers)
 
 j = response.json()
 
