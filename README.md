@@ -6,7 +6,7 @@ from https://sportsline.com to make a list of the top 50 most likely to hit bets
 - [X] NBA (Points, Rebounds, Assists, Fantasy Score, Blocks, Steals, Turnovers)
 - [X] NFL (Pass Yards, Rush Yards, Receiving Yards, Fantasy Score)
 - [X] CFB (Pass Yards, Rush Yards, Receiving Yards, Fantasy Score, Rush TDs, Rec TDs)
-- [ ] NHL
+- [X] NHL (Shots On Goal, Points, Goals, Assists, Goalie Saves, Blocked Shots)
 
 ## How to use
  * Go to https://www.sportsline.com/nba/expert-projections/simulation
@@ -17,9 +17,10 @@ from https://sportsline.com to make a list of the top 50 most likely to hit bets
  * Rename the downloaded JSON files into their league (lowercase)
  
  ### Example:
-    CFB_Projections_12_30_2022 -> csvjson(?) -> cfb.json
+    NCAAF_Projections_12_30_2022 -> csvjson(?) -> cfb.json
     NBA_Projections_12_30_2022 -> csvjson(?) -> nba.json
     NFL_Projections_12_30_2022.json -> csvjson(?) -> nfl.json
+    NHL_Projections_12_30_2022.json -> csvjson(?) -> nhl.json
 
   * Put the json files in the same folder as prizepicks.py
   * Run the python script (either as an exe or with python)
