@@ -1,6 +1,6 @@
 import requests
 import json
-import pandas as pd
+from tabulate import tabulate
 
 # Sort key for sorting diffrences from highest to lowest
 def sort_key(data):
@@ -121,10 +121,10 @@ for data in results:
                 else:
                     if projected >= predicted:
                         diffrence = projected - predicted
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 0])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
                     else:
                         diffrence = predicted - projected
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 1])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])
 
     elif league == 'NFL':
         for nData in predictedNFL:
@@ -148,10 +148,10 @@ for data in results:
                 else:
                     if projected >= predicted:
                         diffrence = projected - predicted
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 0])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
                     else:
                         diffrence = predicted - projected
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 1])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])
 
     elif league == 'CFB':
         for nData in predictedCFB:
@@ -171,16 +171,18 @@ for data in results:
                     predicted = nData[4]
                 if score_type == 'Rec TDs':
                     predicted = nData[6]
+                if score_type == 'Pass Yards':
+                    predicted = nData[2]
                     
                 if predicted == None:
                     print("Score type for Type: "+score_type+" in CFB could not be found!")
                 else:
                     if projected >= predicted:
                         diffrence = projected - predicted
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 0])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
                     else:
                         diffrence = predicted - projected
-                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 1])
+                        diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Over'])
     
     else:
         print("League: "+league+" not found!")
@@ -195,8 +197,4 @@ for data in diffrences:
     if i > 25:
         break
     
-    status = 'Under'
-    if data[6] == 1:
-        status = 'Over'
-    
-    print("Name: "+data[0]+ " Projected: "+str(data[1])+" Predicted: "+str(data[2])+" Diffrence: "+str(data[3])+" League: "+data[4]+" Type: "+data[5]+" Bet: "+status)
+    print(tabulate(diffrences, tablefmt='fancy_grid'))
