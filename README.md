@@ -27,9 +27,15 @@ from https://sportsline.com to make a list of the top 50 most likely to hit bets
   * The top 25 bets will be logged at the bottom, with the players name, league, diffrence between
    projected and predicted points, the score type, and if its under/over the projection
 
+## Packages:
+ - [X] requests (To send a https request to the Prize Picks API)
+ - [X] json (Built-In, For handling the API response and prediction file loading)
+ - [X] tabulate (To build a table of the results for appearence)
+ - [X] fake_headers (TO generate fake headers to stop 403 responses)
+
 ## Warnings:
   * When running the script there will be a lot of warning messages, these are just Prize Picks
    leagues not existing on the prediction software, and score types not existing. Just ignore these!
-  * Try not to run multiple times a day. The Prize Picks API will most likely rate limit you
+  * Try not to run multiple times a day. The Prize Picks API will most likely rate limit you (Unless you use a proxy)
   * These Bets are not 100% accurate. Simmulations make mistakes, these are just intelligent guesses
    as to what bets will hit.
