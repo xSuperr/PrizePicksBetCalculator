@@ -5,7 +5,7 @@ from https://sportsline.com to make a list of the top 50 most likely to hit bets
 ## Supported Leagues
 - [X] NBA (Points, Rebounds, Assists, Fantasy Score, Blocks, Steals, Turnovers)
 - [X] NFL (Pass Yards, Rush Yards, Receiving Yards, Fantasy Score)
-- [X] CFB (Pass Yards, Rush Yards, Receiving Yards, Fantasy Score, Rush TDs, Rec TDs)
+- [X] CFB (Pass Yards, Rush Yards, Fantasy Score, Rush TDs, Rec TDs)
 - [X] NHL (Shots On Goal, Points, Goals, Assists, Goalie Saves, Blocked Shots)
 
 ## How to use
