@@ -31,7 +31,7 @@ from https://sportsline.com to make a list of the top 50 most likely to hit bets
  - [X] requests (To send a https request to the Prize Picks API)
  - [X] json (Built-In, For handling the API response and prediction file loading)
  - [X] tabulate (To build a table of the results for appearence)
- - [X] fake_headers (TO generate fake headers to stop 403 responses)
+ - [X] fake_headers (To generate fake headers to stop 403 responses)
 
 ## Warnings:
   * When running the script there will be a lot of warning messages, these are just Prize Picks
