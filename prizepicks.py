@@ -141,52 +141,52 @@ else:
                     if score_type == 'Points':
                         predicted = float(nData[2])
                     if score_type == 'Rebs+Asts':
-                        p = float(nData[3])
-                        r = float(nData[4])
-                        if not math.isnan(p) and not math.isnan(r):
-                            predicted = p + r
+                        p = nData[3]
+                        r = nData[4]
+                        if not p == "-" and not r == "-":
+                            predicted = float(p)+float(r)
                     if score_type == 'Fantasy Score':
                         predicted = float(nData[1])
                     if score_type == 'Pts+Rebs+Asts':
-                        p = float(nData[2])
-                        r = float(nData[3])
-                        a = float(nData[4])
-                        if not math.isnan(p) and not math.isnan(r) and not math.isnan(a):
-                            predicted = p + r + a
+                        p = nData[2]
+                        r = nData[3]
+                        a = nData[4]
+                        if not p == "-" and not r == "-" and not a == "-":
+                            predicted = float(p)+float(r)+float(a)
                     if score_type == 'Pts+Asts':
-                        p = float(nData[2])
-                        r = float(nData[3])
-                        if not math.isnan(p) and not math.isnan(r):
-                            predicted = p + r
+                        p = nData[2]
+                        r = nData[4]
+                        if not p == "-" and not r == "-":
+                            predicted = float(p)+float(r)
                     if score_type == 'Pts+Rebs':
-                        p = float(nData[2])
-                        r = float(nData[3])
-                        if not math.isnan(p) and not math.isnan(r):
-                            predicted = p + r
+                        p = nData[2]
+                        r = nData[3]
+                        if not p == "-" and not r == "-":
+                            predicted = float(p)+float(r)
                     if score_type == 'Rebounds':
-                        predicted = float(nData[3])
+                        predicted = nData[3]
                     if score_type == 'Assists':
-                        predicted = float(nData[4])
+                        predicted = nData[4]
                     if score_type == 'Blks+Stls':
-                        p = float(nData[5])
-                        r = float(nData[6])
-                        if not math.isnan(p) and not math.isnan(r):
-                            predicted = p + r
+                        p = nData[5]
+                        r = nData[6]
+                        if not p == "-" and not r == "-":
+                            predicted = float(p)+float(r)
                     if score_type == 'Turnovers':
-                        predicted = float(nData[7])
+                        predicted = nData[7]
                     if score_type == 'Free Throws Made':
-                        predicted = float(nData[8])
+                        predicted = nData[8]
                     if score_type == 'Steals':
-                        predicted = float(nData[6])
+                        predicted = nData[6]
                     if score_type == 'Blocked Shots':
-                        predicted = float(nData[5])
+                        predicted = nData[5]
 
                     if predicted is None:
                         print("Score type for Type: " + score_type + " in NBA could not be found!")
-                    elif predicted == "":
-                        print(
-                            "Predicted data for Type: " + score_type + " Player:" + name + " in NBA could not be found!")
+                    elif predicted == "-":
+                        print("Predicted data for Type: " + score_type + " Player:" + name + " in NBA could not be found!")
                     else:
+                        predicted = float(predicted)
                         if projected >= predicted:
                             diffrence = projected - predicted
                             diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
@@ -199,30 +199,30 @@ else:
                 if nData[0] == name:
                     predicted = None
                     if score_type == 'Fantasy Score':
-                        predicted = float(nData[1])
+                        predicted = nData[1]
                     if score_type == 'Pass Yards':
-                        predicted = float(nData[2])
+                        predicted = nData[2]
                     if score_type == 'Rush Yards':
-                        predicted = float(nData[3])
+                        predicted = nData[3]
                     if score_type == 'Receiving Yards':
-                        predicted = float(nData[4])
+                        predicted = nData[4]
                     if score_type == 'Rush+Rec Yds':
-                        p = float(nData[3])
-                        r = float(nData[4])
-                        if not math.isnan(p) and not math.isnan(r):
-                            predicted = p + r
+                        p = nData[3]
+                        r = nData[4]
+                        if not p == "-" and not r == "-":
+                            predicted = float(p)+float(r)
                     if score_type == 'Pass+Rush Yds':
-                        p = float(nData[2])
-                        r = float(nData[3])
-                        if not math.isnan(p) and not math.isnan(r):
-                            predicted = p + r
+                        p = nData[2]
+                        r = nData[3]
+                        if not p == "-" and not r == "-":
+                            predicted = float(p)+float(r)
 
                     if predicted is None:
                         print("Score type for Type: " + score_type + " in NFL could not be found!")
-                    elif math.isnan(predicted):
-                        print(
-                            "Predicted data for Type: " + score_type + " Player:" + name + " in NFL could not be found!")
+                    elif predicted == "-":
+                        print("Predicted data for Type: " + score_type + " Player:" + name + " in NFL could not be found!")
                     else:
+                        predicted = float(predicted)
                         if projected >= predicted:
                             diffrence = projected - predicted
                             diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
@@ -235,31 +235,31 @@ else:
                 if nData[0] == name:
                     predicted = None
                     if score_type == 'Fantasy Score':
-                        predicted = float(nData[1])
+                        predicted = nData[1]
                     if score_type == 'Rush Yards':
-                        predicted = float(nData[3])
+                        predicted = nData[3]
                     # if score_type == 'Receiving Yards':
                     # predicted = float(nData[5])
                     # if score_type == 'Rush+Rec Yds':
                     # predicted = float(nData[3]) + float(nData[5])
                     if score_type == 'Pass+Rush Yds':
-                        p = float(nData[2])
-                        r = float(nData[3])
-                        if not math.isnan(p) and not math.isnan(r):
-                            predicted = p+r
+                        p = nData[2]
+                        r = nData[3]
+                        if not p == "-" and not r == "-":
+                            predicted = float(p)+float(r)
                     if score_type == 'Rush TDs':
-                        predicted = float(nData[4])
+                        predicted = nData[4]
                     if score_type == 'Rec TDs':
-                        predicted = float(nData[6])
+                        predicted = nData[6]
                     if score_type == 'Pass Yards':
-                        predicted = float(nData[2])
+                        predicted = nData[2]
 
                     if predicted is None:
                         print("Score type for Type: " + score_type + " in CFB could not be found!")
-                    elif math.isnan(predicted):
-                        print(
-                            "Predicted data for Type: " + score_type + " Player:" + name + " in CFB could not be found!")
+                    elif predicted == "-":
+                        print("Predicted data for Type: " + score_type + " Player:" + name + " in CFB could not be found!")
                     else:
+                        predicted = float(predicted)
                         if projected >= predicted:
                             diffrence = projected - predicted
                             diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
@@ -272,24 +272,24 @@ else:
                 if nData[0] == name:
                     predicted = None
                     if score_type == 'Shots On Goal':
-                        predicted = float(nData[1])
+                        predicted = nData[1]
                     if score_type == 'Points':
-                        predicted = float(nData[2])
+                        predicted = nData[2]
                     if score_type == 'Goals':
-                        predicted = float(nData[3])
+                        predicted = nData[3]
                     if score_type == 'Assists':
-                        predicted = float(nData[5])
+                        predicted = nData[5]
                     if score_type == 'Goalie Saves':
-                        predicted = float(nData[4])
+                        predicted = nData[4]
                     if score_type == 'Blocked Shots':
-                        predicted = float(nData[6])
+                        predicted = nData[6]
 
                     if predicted is None:
                         print("Score type for Type: " + score_type + " in NHL could not be found!")
-                    elif math.isnan(predicted):
-                        print(
-                            "Predicted data for Type: " + score_type + " Player:" + name + " in NHL could not be found!")
+                    elif predicted == "-":
+                        print("Predicted data for Type: " + score_type + " Player:" + name + " in NHL could not be found!")
                     else:
+                        predicted = float(predicted)
                         if projected >= predicted:
                             diffrence = projected - predicted
                             diffrences.append([name, projected, predicted, diffrence, league, score_type, 'Under'])
